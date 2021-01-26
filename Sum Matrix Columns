@@ -1,0 +1,25 @@
+def row_column_read():
+    r, c = list(map(int, input().split(", ")))
+    return r, c
+
+
+def matrix_read(r):
+    m = []
+    for _ in range(r):
+        row_data = [int(el) for el in input().split()]
+        m.append(row_data)
+    return m
+
+
+def sum_matrix_column(m, r, c):
+    for i in range(c):
+        sum_column = 0
+        for el in range(r):
+            s = m[el][i]
+            sum_column += s
+        print(sum_column)
+
+
+row, column = row_column_read()
+matrix = matrix_read(row)
+sum_matrix_column(matrix, row, column)
