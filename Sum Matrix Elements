@@ -1,0 +1,29 @@
+def row_column_read():
+    row, column = list(map(int, input().split(", ")))
+    return row, column
+
+
+def matrix_read(n):
+    result = []
+    for _ in range(n):
+        current_row = [int(x) for x in list(map(int, input().split(", ")))]
+        result.append(current_row)
+    return result
+
+
+def sum_matrix_element(matrix):
+    matrix_sum = 0
+    for el in matrix:
+        matrix_sum += sum(el)
+    return matrix_sum
+
+
+def printing(s_el, mat):
+    print(s_el)
+    print(mat)
+
+
+n, m = row_column_read()
+matrix = matrix_read(n)
+sum_elements = sum_matrix_element(matrix)
+printing(sum_elements, matrix)
