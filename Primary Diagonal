@@ -1,0 +1,24 @@
+def size_read():
+    n = int(input())
+    return n
+
+
+def matrix_read(s):
+    m = []
+    for _ in range(s):
+        current_row = [int(el) for el in input().split()]
+        m.append(current_row)
+    return m
+
+
+def sum_matrix_diagonal(m, s):
+    sum_d = 0
+    for i in range(s):
+        sum_d += m[i][i]
+    return sum_d
+
+
+size_matrix = size_read()
+matrix = matrix_read(size_matrix)
+sum_diagonal = sum_matrix_diagonal(matrix, size_matrix)
+print(sum_diagonal)
