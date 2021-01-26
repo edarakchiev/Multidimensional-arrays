@@ -1,0 +1,23 @@
+def matrix_read(size):
+    m = []
+    for _ in range(size):
+        current_row = [el for el in input()]
+        m.append(current_row)
+    return m
+
+
+def searching_symbol(m, s):
+    for i in range(len(m)):
+        for e in range(len(m[i])):
+            if m[i][e] == s:
+                return i, e
+
+
+n = int(input())
+matrix = matrix_read(n)
+symbol = input()
+if searching_symbol(matrix, symbol):
+    row, column = searching_symbol(matrix, symbol)
+    print(f"({row}, {column})")
+else:
+    print(f"{symbol} does not occur in the matrix")
