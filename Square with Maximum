@@ -1,0 +1,32 @@
+def read_matrix():
+    r, c = list(map(int, input().split(", ")))
+    m = []
+    for _ in range(r):
+        current_row = [int(el) for el in input().split(", ")]
+        m.append(current_row)
+    return m
+
+
+def best_sub_matrix(m):
+    max_sum = 0
+    best_submatrix = []
+    for r in range(len(m)-1):
+        for c in range(len(m[r])-1):
+            sum_sub_matrix = m[r][c] + m[r][c+1] + m[r+1][c] + m[r+1][c+1]
+            if sum_sub_matrix > max_sum:
+                max_sum = sum_sub_matrix
+                best_submatrix = [m[r][c], m[r][c+1]], [m[r+1][c], m[r+1][c+1]]
+    return max_sum, best_submatrix
+
+
+def print_matrix(m):
+    for index in range(len(m)):
+        for i in range(len(m[index])):
+            print(m[index][i], end=" ")
+        print()
+
+
+matrix = read_matrix()
+sum_matrix, best_matrix = best_sub_matrix(matrix)
+print_matrix(best_matrix)
+print(sum_matrix)
