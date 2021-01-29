@@ -1,0 +1,25 @@
+def matrix_read():
+    r, c = list(map(int, input().split()))
+    m = []
+    for _ in range(r):
+        current_row = [el for el in input().split()]
+        m.append(current_row)
+    return m
+
+
+def sub_matrix_counter(m):
+    counter = 0
+    for r in range(len(m) - 1):
+        for c in range(len(m[r]) - 1):
+            el_1 = m[r][c]
+            el_2 = m[r][c + 1]
+            el_3 = m[r + 1][c]
+            el_4 = m[r + 1][c + 1]
+            if el_1 == el_2 == el_3 == el_4:
+                counter += 1
+    return counter
+
+
+matrix = matrix_read()
+count = sub_matrix_counter(matrix)
+print(count)
