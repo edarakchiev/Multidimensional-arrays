@@ -1,0 +1,32 @@
+def matrix_read():
+    r, c = [int(el) for el in input().split()]
+    m = []
+    for _ in range(r):
+        row_data = [el for el in input().split()]
+        m.append(row_data)
+    return m, r, c
+
+
+matrix, row, col = matrix_read()
+
+while True:
+    data = input()
+    if data == "END":
+        break
+    if not data.startswith("swap") or not len(data.split()) == 5:
+        print("Invalid input!")
+    else:
+        data = data.split()
+        row_1 = int(data[1])
+        col_1 = int(data[2])
+        row_2 = int(data[3])
+        col_2 = int(data[4])
+        if row_1 < row and row_2 < row and col_1 < col and col_2 < col:
+            el_1 = matrix[row_1][col_1]
+            el_2 = matrix[row_2][col_2]
+            matrix[row_1][col_1] = el_2
+            matrix[row_2][col_2] = el_1
+            for e in matrix:
+                print(' '.join(str(a) for a in e))
+        else:
+            print("Invalid input!")
