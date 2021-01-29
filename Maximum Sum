@@ -1,0 +1,36 @@
+def matrix_read():
+    r, c = list(map(int, input().split()))
+    m = []
+    for _ in range(r):
+        row_element = [int(el) for el in input().split()]
+        m.append(row_element)
+    return m, r, c
+
+
+def sub_matrix_max_sum(m, r, c):
+    max_sum_matrix = []
+    sum_el_max = -99999999999
+    for i_r in range(r - 2):
+        for i_c in range(c - 2):
+            el_1 = m[i_r][i_c]
+            el_2 = m[i_r][i_c + 1]
+            el_3 = m[i_r][i_c + 2]
+            el_4 = m[i_r + 1][i_c]
+            el_5 = m[i_r + 1][i_c + 1]
+            el_6 = m[i_r + 1][i_c + 2]
+            el_7 = m[i_r + 2][i_c]
+            el_8 = m[i_r + 2][i_c + 1]
+            el_9 = m[i_r + 2][i_c + 2]
+            sub_matrix = [[el_1, el_2, el_3], [el_4, el_5, el_6], [el_7, el_8, el_9]]
+            sum_el = sum([sum(el) for el in sub_matrix])
+            if sum_el > sum_el_max:
+                sum_el_max = sum_el
+                max_sum_matrix = sub_matrix
+    return sum_el_max, max_sum_matrix
+
+
+matrix, row, col = matrix_read()
+max_sum, sub_matrix = sub_matrix_max_sum(matrix, row, col)
+print(f"Sum = {max_sum}")
+for el in sub_matrix:
+    print(" ".join(str(e) for e in el))
