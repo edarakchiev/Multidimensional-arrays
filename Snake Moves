@@ -1,0 +1,26 @@
+def init_matrix(r, c):
+    m = []
+    for i in range(r):
+        current_row = [0 for _ in range(c)]
+        m.append(current_row)
+    return m
+
+
+row, col = [int(el) for el in input().split()]
+text = input()
+matrix = init_matrix(row, col)
+text_index = 0
+
+for r in range(row):
+    for c in range(col):
+        matrix[r][c] = text[text_index]
+        text_index += 1
+        if text_index == len(text):
+            text_index = 0
+
+for r in range(row):
+    if r % 2 == 1:
+        matrix[r].reverse()
+
+for el in matrix:
+    print(''.join(el))
