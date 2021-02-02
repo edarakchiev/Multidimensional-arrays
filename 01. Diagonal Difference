@@ -1,0 +1,36 @@
+def matrix_read():
+    n = int(input())
+    m = []
+    for _ in range(n):
+        row = [int(el) for el in input().split()]
+        m.append(row)
+    return m
+
+
+def primary_diagonal(m):
+    size = len(m)
+    p_diagonal_sum = 0
+    for i in range(size):
+        p_diagonal_sum += m[i][i]
+    return p_diagonal_sum
+
+
+def second_diagonal(m):
+    size = len(m)
+    s_diagonal_sum = 0
+    counter = 0
+    for c in range(size-1, -1, -1):
+        s_diagonal_sum += m[counter][c]
+        counter += 1
+    return s_diagonal_sum
+
+
+def difference_diagonals(sum_1, sum_2):
+    return abs(sum_1 - sum_2)
+
+
+matrix = matrix_read()
+primary_diagonal_sum = primary_diagonal(matrix)
+second_diagonal_sum = second_diagonal(matrix)
+difference = difference_diagonals(primary_diagonal_sum, second_diagonal_sum)
+print(difference)
